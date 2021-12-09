@@ -1,0 +1,38 @@
+{
+  "name": "dem-kupu",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "@material-ui/core": "4.11.0",
+    "emailjs": "3.3.0",
+    "emailjs-com": "2.6.3",
+    "eslint": "^6.6.0",
+    "node-sass": "^7.0.0",
+    "react": "17.0.0",
+    "react-anchor-link-smooth-scroll": "1.0.12",
+    "react-client-captcha": "^1.0.3",
+    "react-dark-mode-toggle": "^0.2.0",
+    "react-dom": "17.0.0",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "3.4.3",
+    "snackbar": "^1.1.0",
+    "webpack": "^4.42.0"
+  },
+  "devDependencies": {
+    "typescript": "3.8.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
