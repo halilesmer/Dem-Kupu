@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useContext} from "react";
 import "./styles.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
@@ -10,7 +10,7 @@ export default function App() {
   console.log(theme)
 
   return (
-    <div className={theme.theme==='dark' ? 'dark App' : 'App'}>
+    <div className={theme.theme === "dark" ? "dark App" : "App light"}>
       <Router>
         <Switch>
           <Route path="/" component={Home} exact />

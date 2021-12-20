@@ -34,7 +34,6 @@ export default function ThemeToggle() {
    
    useEffect(() => {
        updateTheme(isEnabled);
-       console.log('theme: ', theme);
       theme.toggleTheme();
   }, [isEnabled]);
 

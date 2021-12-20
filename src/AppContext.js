@@ -5,7 +5,6 @@ const AppContext = createContext();
 
 function AppProvider(props) {
   const [theme, setTheme] = useState("dark");
-  const [currency, setCurrency] = useState("USD");
 
   const toggleTheme = () => {
     if (theme === "dark") {
@@ -17,7 +16,6 @@ function AppProvider(props) {
   const themeObj = {
     theme: theme,
     toggleTheme: toggleTheme,
-    currency: currency,
   };
 
   return (

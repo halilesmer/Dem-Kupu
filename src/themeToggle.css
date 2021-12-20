@@ -1,8 +1,8 @@
 * {
-    
+
     /* Make sure all elements are above the background */
     z-index: 1;
-   
+
 }
 
 :root {
@@ -55,10 +55,10 @@
 
 
 .toggle-wrapper {
-   /*  width: 130px;
-    display: block; */
-    /* margin: auto; */
-    /* Centering for demo */
+    position: absolute;
+    top: 5px;
+    right: 45%;
+    left: 45%;
 }
 
 .toggle {
@@ -108,4 +108,32 @@
     height: 30px;
     width: 30px;
     z-index: 0;
+}
+
+/* Media query Dark theme button */
+@media screen and (max-width: 1150px) {
+    .toggle {
+        height: 32.5px;
+        width: 75px;
+        padding: 6px;
+    }
+
+    .toggle .icons {
+        margin: 0 2.5px;
+    }
+
+    .toggle .icons svg {
+        height: 20px;
+        width: 20px;
+    }
+
+    .toggle::before {
+        height: 21px;
+        width: 21px;
+    }
+
+    .toggle.enabled::before {
+        -webkit-transform: translateX(40px);
+        transform: translateX(40px);
+    }
 }

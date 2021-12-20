@@ -1,13 +1,20 @@
-import React from "react";
+import React, {useContext} from "react";
 import logo from "./assets/DemKupuLogo.png";
 import Footer from "./Footer";
 import "./stylesImpressum.css";
 import { Link } from "react-router-dom";
-
+import { AppContext } from "./AppContext.js";
 
 const Impressum = ({ language }) => {
+  const theme = useContext(AppContext);
+
   return (
-    <main className="Main-Impressum">
+    <main className={
+      theme.theme === "dark"
+          ? "dark Main-Impressum"
+          : "Main-Impressum light"
+      }
+    >
       <div>
         <Link to="/">
           <img src={logo} alt="demküpü-Logo" />
@@ -48,10 +55,7 @@ const Impressum = ({ language }) => {
             Handelsregister: HRB 194902 B <br></br>
             Amtsgericht Berlin (Charlottenburg)
           </p>
-          <p>
-
-            Umsatzsteuer-ID: DE 317417475
-          </p>
+          <p>Umsatzsteuer-ID: DE 317417475</p>
         </div>
         <div>
           <h5>Haftung für Inhalte</h5>
