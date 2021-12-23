@@ -70,6 +70,7 @@
     position: relative;
     transition: background var(--transition);
     cursor: pointer;
+    opacity: 0.5;
 }
 
 .toggle::before {
