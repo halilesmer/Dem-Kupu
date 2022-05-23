@@ -26,15 +26,11 @@ const updateTheme = (isDarkEnabled) => {
 export default function ThemeToggle() {
   const [isEnabled, setIsEnabled] = useState(false);
     const theme = useContext(AppContext);
-    
-    /*
-    * Read the blog post here:
-    * https://letsbuildui.dev/articles/building-a-dark-mode-theme-toggle
-    */
    
    useEffect(() => {
        updateTheme(isEnabled);
       theme.toggleTheme();
+         // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEnabled]);
 
   const toggleState = () => {

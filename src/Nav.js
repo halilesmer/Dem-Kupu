@@ -20,10 +20,6 @@ const Nav = ({ language }) => {
       </div>
       
       <ThemeToggle />
-      {/* <button onClick={theme.toggleTheme} style={style}>
-        Toggle theme
-      </button> */}
-
       <ul>
         <AnchorLink href="#about">
           <li>{data[language].aboutNav}</li>
