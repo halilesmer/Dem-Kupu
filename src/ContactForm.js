@@ -101,7 +101,7 @@ const ContactForm = ({ language }) => {
 
           {/*-------------- Submit -----------------*/}
 
-          <input type="submit" value={data[language].sendName} />
+          <input type="submit" value={data[language].sendName} style={{margin: '0 auto', width: '100px', display: 'block'}} />
         </form>
       </div>
     </div>
