@@ -5,13 +5,13 @@ import { NativeSelect, FormControl, InputLabel, Select, MenuItem, Box } from "@m
 
 
 export default function LanguageMenu({ change, language, className }) {
+  console.log("language: ", language);
   const [anchorEl, setAnchorEl] = useState('');
-  console.log("anchorEl: ", anchorEl);
+
 
   const handleChange = (event) => {
     setAnchorEl(event.target.value);
     change(event);
-    handleClose();
   };
 
   const handleClose = () => {
@@ -33,7 +33,6 @@ export default function LanguageMenu({ change, language, className }) {
           value={anchorEl === null ? '' : anchorEl }
           label={language === 0 ? "DE" : "EN"}
           onChange={handleChange}
-        
 
         >
           <MenuItem value={0} onClick={handleChoice}>DE</MenuItem>
