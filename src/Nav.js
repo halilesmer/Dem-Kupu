@@ -1,8 +1,7 @@
-
+import * as React from 'react';
 import "./styles.css";
-/* import {
-  NativeSelect,
-  FormControl, InputLabel, Select, Box, Toolbar,
+import {
+Box, Toolbar,
   Container,
   Tooltip,
   Button,
@@ -13,33 +12,21 @@ import "./styles.css";
   IconButton,
   AppBar,
 
-} from "@mui/material"; */
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+} from "@mui/material";
+import {MenuIcon,AdbIcon} from '@mui/icons-material';
 
-import MenuIcon from '@mui/icons-material/Menu';
-import AdbIcon from '@mui/icons-material/Adb';
-
-import logo from "./assets/DemKupuLogo.png";
 import { Link } from "react-router-dom";
-import ThemeToggle from './ThemeToggle.js';
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import data from "./data";
-import { Navbar } from 'react-responsive-navbar-overlay';
+import Hamburger from 'hamburger-react'
+import ThemeToggle from './ThemeToggle.js';
 import LanguageMenu from "./Language";
+import data from "./data";
+import logo from "./assets/DemKupuLogo.png";
 
 
 const Nav = ({ language }) => {
+  const [isOpen, setOpen] = React.useState(false)
+
   const about = data[language].aboutNav;
   const prepare = data[language].prepareNav;
   const contact = data[language].contactNav;
@@ -64,6 +51,7 @@ const Nav = ({ language }) => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+    setOpen(false)
   };
 
   const handleCloseUserMenu = () => {
@@ -72,8 +60,9 @@ const Nav = ({ language }) => {
 
 
   return (
-    <AppBar position="static" style={{ background: '#00000000' }}>
+    <AppBar position="static" style={{ background: '#00000000'}}>
       <Container maxWidth="xl">
+        
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -91,7 +80,7 @@ const Nav = ({ language }) => {
             }}
           >
             <Link to="/">
-              <img src={logo} alt="logo-dem-kupu" width={30} />
+              <img src={logo} alt="logo-dem-kupu" width={55} />
             </Link>
           </Typography>
 
@@ -104,7 +93,9 @@ const Nav = ({ language }) => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              <Hamburger toggled={isOpen} toggle={setOpen} />
+
+
             </IconButton>
             <Menu
               id="menu-appbar"
