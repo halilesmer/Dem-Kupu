@@ -5,7 +5,6 @@ import { ReactComponent as SunIcon } from "./assets/svg/sun.svg";
 import { AppContext } from "./AppContext.js";
 
 const updateTheme = (isDarkEnabled) => {
-    
   // Get CSS variables for background/foreground
   const styles = getComputedStyle(document.body);
   const black = styles.getPropertyValue("--black");
@@ -23,22 +22,25 @@ const updateTheme = (isDarkEnabled) => {
   }
 };
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ className = '' }) {
   const [isEnabled, setIsEnabled] = useState(false);
-    const theme = useContext(AppContext);
-   
-   useEffect(() => {
-       updateTheme(isEnabled);
-      theme.toggleTheme();
-         // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  const theme = useContext(AppContext);
+
+  useEffect(() => {
+    updateTheme(isEnabled);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEnabled]);
 
   const toggleState = () => {
     setIsEnabled((prevState) => !prevState);
+    theme.toggleTheme();
   };
 
   return (
-    <label className="toggle-wrapper" htmlFor="toggle">
+
+    <label className={`${className}`}
+      htmlFor="toggle">
       <div className={`toggle ${isEnabled ? "enabled" : "disabled"}`}>
         <span className="hidden">
           {isEnabled ? "Enable Light Mode" : "Enable Dark Mode"}
@@ -57,5 +59,6 @@ export default function ThemeToggle() {
         />
       </div>
     </label>
+
   );
 }

@@ -1,17 +1,257 @@
-import React from "react";
+
 import "./styles.css";
+/* import {
+  NativeSelect,
+  FormControl, InputLabel, Select, Box, Toolbar,
+  Container,
+  Tooltip,
+  Button,
+  Avatar,
+  Menu,
+    MenuItem,
+  Typography,
+  IconButton,
+  AppBar,
+
+} from "@mui/material"; */
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+
+import MenuIcon from '@mui/icons-material/Menu';
+import AdbIcon from '@mui/icons-material/Adb';
+
 import logo from "./assets/DemKupuLogo.png";
 import { Link } from "react-router-dom";
 import ThemeToggle from './ThemeToggle.js';
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import data from "./data";
+import { Navbar } from 'react-responsive-navbar-overlay';
+import LanguageMenu from "./Language";
 
 
 const Nav = ({ language }) => {
+  const about = data[language].aboutNav;
+  const prepare = data[language].prepareNav;
+  const contact = data[language].contactNav;
 
-  
+  const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+  const pages = [about, prepare, contact];
+  // const [language, setLanguage] = useState(0);
+  /* const handleChange = (e) => {
+    setLanguage(e.target.value);
+  }; */
+
+
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+
   return (
-    <div className="Nav">
+    <AppBar position="static" style={{ background: '#00000000' }}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            <Link to="/">
+              <img src={logo} alt="logo-dem-kupu" width={30} />
+            </Link>
+          </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              <MenuItem
+                onClick={handleCloseNavMenu}  >
+                <Typography textAlign="center">
+                  <AnchorLink href="#about">
+                    {data[language].aboutNav}
+                  </AnchorLink>
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu} >
+                <Typography textAlign="center">
+                  <AnchorLink href="#prepare">
+                    {data[language].prepareNav}
+                  </AnchorLink>
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu} >
+                <Typography textAlign="center">
+                  <AnchorLink href="#mail">
+                    {data[language].contactNav}
+                  </AnchorLink>
+                </Typography>
+              </MenuItem>
+
+              {/* Menu Item Toggle */}
+              <MenuItem component={'div'} onClick={handleCloseNavMenu}  >
+                <ThemeToggle onClick={handleCloseNavMenu} />
+
+              </MenuItem>
+
+
+            </Menu>
+          </Box>
+          <Typography 
+            variant="h5"
+            noWrap
+            component="div"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+
+            <Link to="/">
+              <img src={logo} alt="logo-dem-kupu" width={50} />
+            </Link>
+
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <Button
+
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              <AnchorLink href="#about">
+                {data[language].aboutNav}
+              </AnchorLink>
+            </Button>
+            <Button
+
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              <AnchorLink href="#prepare">
+                {data[language].prepareNav}
+              </AnchorLink>
+            </Button>
+            <Button
+
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              <AnchorLink href="#mail">
+                {data[language].contactNav}
+              </AnchorLink>
+            </Button>
+
+          </Box>
+          {/* Navbar Toggle */}
+          <Typography component={'div'}>
+            <ThemeToggle className="toggle-wrapper"/>
+          </Typography>
+
+
+        </Toolbar>
+      </Container>
+    </AppBar>
+
+
+    /*  <div className="Nav">
+       <Navbar>
+         <div>
+           {" "}
+           <Link to="/">
+             <img src={logo} alt="logo-dem-kupu" />
+           </Link>
+         </div>
+ 
+         <ThemeToggle />
+         <ul>
+           <AnchorLink href="#about">
+             <li>{data[language].aboutNav}</li>
+           </AnchorLink>
+           <AnchorLink href="#prepare">
+             <li>{data[language].prepareNav}</li>
+           </AnchorLink>
+           <AnchorLink href="#mail">
+             <li>{data[language].contactNav}</li>
+           </AnchorLink>
+ 
+         </ul>
+         <LanguageMenu change={handleChange} language={language} />
+ 
+ 
+       </Navbar>
+     </div> */
+  );
+};
+
+export default Nav;
+
+/*     <div className="Nav">
       <div>
         {" "}
         <Link to="/">
@@ -31,8 +271,4 @@ const Nav = ({ language }) => {
           <li>{data[language].contactNav}</li>
         </AnchorLink>
       </ul>
-    </div>
-  );
-};
-
-export default Nav;
+    </div> */

@@ -30,17 +30,20 @@
 
 
 .toggle-wrapper {
-    position: absolute;
+    margin: 0 auto;
+    /* display: none !important; */
+
+    /* position: absolute;
     top: 5px;
     right: 45%;
-    left: 45%;
+    left: 45%; */
 }
 
 .toggle {
-    height: 65px;
-    width: 130px;
+    height: 41px;
+    width: 100px;
     background: var(--foreground);
-    border-radius: 40px;
+    border-radius: 20px;
     padding: 12px;
     position: relative;
     transition: background var(--transition);
@@ -51,9 +54,10 @@
 .toggle::before {
     content: "";
     display: block;
-    height: 41px;
-    width: 41px;
-    border-radius: 30px;
+    height: 26px;
+    width: 26px;
+    margin: -5px 0px 0px 7px;
+    border-radius: 15px;
     background: var(--background);
     position: absolute;
     z-index: 2;
@@ -62,7 +66,7 @@
 }
 
 .toggle.enabled::before {
-    transform: translateX(65px);
+    transform: translateX(37px);
 }
 
 .toggle input {
@@ -77,6 +81,8 @@
     align-items: center;
     height: 100%;
     margin: 0 5px;
+    place-content: space-between;
+
 }
 
 .toggle .icons svg {
@@ -87,7 +93,7 @@
 }
 
 /* Media query Dark theme button */
-@media screen and (max-width: 1150px) {
+/* @media screen and (max-width: 1150px) {
     .toggle {
         height: 32.5px;
         width: 75px;
@@ -112,4 +118,4 @@
         -webkit-transform: translateX(40px);
         transform: translateX(40px);
     }
-}
+} */

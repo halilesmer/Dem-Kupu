@@ -5,7 +5,6 @@ const AppContext = createContext();
 
 function AppProvider(props) {
   const [theme, setTheme] = useState(() => localStorage.getItem('light'));
-  console.log('theme: ', theme);
   
   const toggleTheme = () => {
     if (theme === "dark") {

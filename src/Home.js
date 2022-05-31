@@ -4,7 +4,7 @@ import Description from "./Description";
 import PreperationArea from "./PreperationArea";
 import ContactArea from "./ContactArea";
 import Footer from "./Footer";
-import LanguageMenu from "./Language";
+import Nav from "./Nav";
 
 import "./styles.css";
 
@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <div>
-      <LanguageMenu change={handleChange} language={language} />
+      {/* <Nav language={language} change={handleChange} /> */}
       <LandingArea language={language} />
       <Description language={language} />
       <PreperationArea language={language} />

@@ -5,7 +5,7 @@ import "./stylesImpressum.css";
 import { Link } from "react-router-dom";
 import { AppContext } from "./AppContext.js";
 
-const Impressum = ({ language }) => {
+const Impressum = () => {
   const theme = useContext(AppContext);
 
   return (
