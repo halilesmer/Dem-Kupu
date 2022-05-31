@@ -9,7 +9,7 @@ export default function LanguageMenu({ change, language, className }) {
   console.log("anchorEl: ", anchorEl);
 
   const handleChange = (event) => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(event.target.value);
     change(event);
     handleClose();
   };
@@ -30,41 +30,16 @@ export default function LanguageMenu({ change, language, className }) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={anchorEl}
+          value={anchorEl === null ? '' : anchorEl }
           label={language === 0 ? "DE" : "EN"}
           onChange={handleChange}
         
 
         >
-          <MenuItem value={0} onClick={handleChoice}>Deutsch</MenuItem>
-          <MenuItem value={1} onClick={handleChoice}>English</MenuItem>
+          <MenuItem value={0} onClick={handleChoice}>DE</MenuItem>
+          <MenuItem value={1} onClick={handleChoice}>EN</MenuItem>
           
         </Select>
-   {/*      <NativeSelect
-          defaultValue={0}
-          inputProps={{
-            name: 'testName',
-            id: 'uncontrolled-native',
-          }}
-          onChange={handleChange}
-          anchorEl={anchorEl}
-          
-          onClose={handleClose}
-        >
-          <option value={0} onClick={handleChoice}>Deutsch</option>
-          <option value={1} onClick={handleChoice}>English</option>
-        </NativeSelect> */}
-        {/*   <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={language === 0 ? "DE" : "EN"}
-          label="Age"
-          onChange={handleChange}
-
-        >
-          <MenuItem value={ 10}>Deutsch</MenuItem>
-          <MenuItem value={20}>English</MenuItem>
-        </Select> */}
       </FormControl>
     </div>
   );
