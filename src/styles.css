@@ -9,20 +9,20 @@
   background-color: rgb(236, 253, 235);
   max-width: 1920px;
   margin: 0 auto;
-}
-
-.LanguageMenu {
-  /* width: 10%; */
-  background: transparent;
-  position: absolute;
-  padding: 2.5rem;
-  right: 2rem;
-  color: white;
-}
-
-.App {
   text-align: center;
 }
+
+.LanguageSelectNavBar {
+  width: 15%;
+  background: transparent;
+ /*  position: absolute;
+  padding: 2.5rem;
+  right: 2rem; */
+  color: white;
+  margin-left: 30px;
+
+}
+
 
 .dark {
   color: #6d9267 !important;
@@ -98,9 +98,13 @@
   border-radius: 0.5rem;
 }
 
-a {
-  text-decoration: none;
-  color: white;
+
+
+header a,
+header img  {
+  text-decoration: none !important;
+  color: darkgreen !important;
+    font-weight: 900;
 }
 
 .description {

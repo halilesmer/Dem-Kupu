@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <div>
-      {/* <Nav language={language} change={handleChange} /> */}
+       <Nav language={language} change={handleChange} /> 
       <LandingArea language={language} />
       <Description language={language} />
       <PreperationArea language={language} />

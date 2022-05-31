@@ -4,11 +4,14 @@ import React, {useState} from "react";
 import { NativeSelect, FormControl, InputLabel, Select, MenuItem, Box } from "@mui/material";
 
 
-export default function LanguageMenu({ change, language }) {
-  const [anchorEl, setAnchorEl] = useState(null);
+export default function LanguageMenu({ change, language, className }) {
+  const [anchorEl, setAnchorEl] = useState('');
+  console.log("anchorEl: ", anchorEl);
 
-  const handleClick = (event) => {
+  const handleChange = (event) => {
     setAnchorEl(event.currentTarget);
+    change(event);
+    handleClose();
   };
 
   const handleClose = () => {
@@ -20,19 +23,21 @@ export default function LanguageMenu({ change, language }) {
   };
 
   return (
-    <div className="LanguageMenu">
+    <div className={`LanguageMenu ${className}`}>
 
-      <FormControl fullWidth>
+      <FormControl fullWidth >
         <InputLabel id="demo-simple-select-label">{language === 0 ? "DE" : "EN"}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={setAnchorEl}
+          value={anchorEl}
           label={language === 0 ? "DE" : "EN"}
-          onChange={handleChoice}
+          onChange={handleChange}
+        
+
         >
           <MenuItem value={0} onClick={handleChoice}>Deutsch</MenuItem>
-          <MenuItem value={0} onClick={handleChoice}>English</MenuItem>
+          <MenuItem value={1} onClick={handleChoice}>English</MenuItem>
           
         </Select>
    {/*      <NativeSelect
@@ -41,7 +46,7 @@ export default function LanguageMenu({ change, language }) {
             name: 'testName',
             id: 'uncontrolled-native',
           }}
-          onChange={handleClick}
+          onChange={handleChange}
           anchorEl={anchorEl}
           
           onClose={handleClose}
@@ -54,7 +59,7 @@ export default function LanguageMenu({ change, language }) {
           id="demo-simple-select"
           value={language === 0 ? "DE" : "EN"}
           label="Age"
-          onChange={handleClick}
+          onChange={handleChange}
 
         >
           <MenuItem value={ 10}>Deutsch</MenuItem>
@@ -68,7 +73,7 @@ export default function LanguageMenu({ change, language }) {
       <Button
         aria-controls="simple-menu"
         aria-haspopup="true"
-        onClick={handleClick}
+        onClick={handleChange}
         style={{ color: "white" }}
       >
         {language === 0 ? "DE" : "EN"}

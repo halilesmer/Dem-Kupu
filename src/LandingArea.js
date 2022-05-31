@@ -13,7 +13,6 @@ const LandingArea = ({ language }) => {
         theme.theme === "dark" ? "landingAreaDark landingArea" : "landingArea")
       }
     >
-      <Nav language={language} />
     </div>
   );
 };

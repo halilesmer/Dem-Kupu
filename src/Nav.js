@@ -1,19 +1,19 @@
 import * as React from 'react';
 import "./styles.css";
 import {
-Box, Toolbar,
+  Box, Toolbar,
   Container,
   Tooltip,
   Button,
   Avatar,
   Menu,
-    MenuItem,
+  MenuItem,
   Typography,
   IconButton,
   AppBar,
 
 } from "@mui/material";
-import {MenuIcon,AdbIcon} from '@mui/icons-material';
+import { MenuIcon, AdbIcon } from '@mui/icons-material';
 
 import { Link } from "react-router-dom";
 import AnchorLink from "react-anchor-link-smooth-scroll";
@@ -24,7 +24,7 @@ import data from "./data";
 import logo from "./assets/DemKupuLogo.png";
 
 
-const Nav = ({ language }) => {
+const Nav = ({ language, change }) => {
   const [isOpen, setOpen] = React.useState(false)
 
   const about = data[language].aboutNav;
@@ -33,12 +33,21 @@ const Nav = ({ language }) => {
 
   const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
   const pages = [about, prepare, contact];
-  // const [language, setLanguage] = useState(0);
-  /* const handleChange = (e) => {
+  
+ /*   const [language, setLanguage] = useState(0);
+  const handleChange = (e) => {
     setLanguage(e.target.value);
   }; */
 
 
+  const styleAppbar = {
+    background: 'transparent',
+    position: 'fixed',
+    top: '0',
+    /* color: blanchedalmond; */
+    zIndex: '2'
+
+  }
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -60,9 +69,9 @@ const Nav = ({ language }) => {
 
 
   return (
-    <AppBar position="static" style={{ background: '#00000000'}}>
+    <AppBar position="static" style={styleAppbar}>
       <Container maxWidth="xl">
-        
+
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -144,10 +153,9 @@ const Nav = ({ language }) => {
 
               </MenuItem>
 
-
             </Menu>
           </Box>
-          <Typography 
+          <Typography
             variant="h5"
             noWrap
             component="div"
@@ -201,8 +209,15 @@ const Nav = ({ language }) => {
           </Box>
           {/* Navbar Toggle */}
           <Typography component={'div'}>
-            <ThemeToggle className="toggle-wrapper"/>
+            <ThemeToggle className="toggle-wrapper" />
           </Typography>
+
+
+          <LanguageMenu
+            className='LanguageSelectNavBar' 
+            change={change}
+            language={language}
+            />
 
 
         </Toolbar>
