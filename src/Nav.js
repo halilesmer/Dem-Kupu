@@ -3,9 +3,7 @@ import "./styles.css";
 import {
   Box, Toolbar,
   Container,
-  Tooltip,
   Button,
-  Avatar,
   Menu,
   MenuItem,
   Typography,
@@ -13,7 +11,6 @@ import {
   AppBar,
 
 } from "@mui/material";
-import { MenuIcon, AdbIcon } from '@mui/icons-material';
 
 import { Link } from "react-router-dom";
 import AnchorLink from "react-anchor-link-smooth-scroll";
@@ -27,17 +24,12 @@ import logo from "./assets/DemKupuLogo.png";
 const Nav = ({ language, change }) => {
   const [isOpen, setOpen] = React.useState(false)
 
-  const about = data[language].aboutNav;
+  /* const about = data[language].aboutNav;
   const prepare = data[language].prepareNav;
-  const contact = data[language].contactNav;
+  const contact = data[language].contactNav; */
 
-  const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-  const pages = [about, prepare, contact];
-  
- /*   const [language, setLanguage] = useState(0);
-  const handleChange = (e) => {
-    setLanguage(e.target.value);
-  }; */
+/*   const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+  const pages = [about, prepare, contact]; */
 
 
   const styleAppbar = {
@@ -49,24 +41,17 @@ const Nav = ({ language, change }) => {
 
   }
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+ 
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
     setOpen(false)
   };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
 
   return (
     <AppBar position="static" style={styleAppbar}>

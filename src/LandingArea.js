@@ -1,5 +1,4 @@
 import React, {useContext} from "react";
-import Nav from "./Nav";
 import { AppContext } from "./AppContext.js";
 
 
