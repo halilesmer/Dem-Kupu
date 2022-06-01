@@ -1,5 +1,7 @@
 import * as React from 'react';
 import "./styles.css";
+import "./themeToggle.css";
+
 import {
   Box, Toolbar,
   Container,
@@ -28,8 +30,8 @@ const Nav = ({ language, change }) => {
   const prepare = data[language].prepareNav;
   const contact = data[language].contactNav; */
 
-/*   const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-  const pages = [about, prepare, contact]; */
+  /*   const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+    const pages = [about, prepare, contact]; */
 
 
   const styleAppbar = {
@@ -41,7 +43,7 @@ const Nav = ({ language, change }) => {
 
   }
   const [anchorElNav, setAnchorElNav] = React.useState(null);
- 
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -133,8 +135,10 @@ const Nav = ({ language, change }) => {
               </MenuItem>
 
               {/* Menu Item Toggle */}
+
               <MenuItem component={'div'} onClick={handleCloseNavMenu}  >
-                <ThemeToggle onClick={handleCloseNavMenu} />
+
+                <ThemeToggle />
 
               </MenuItem>
 
@@ -199,10 +203,10 @@ const Nav = ({ language, change }) => {
 
 
           <LanguageMenu
-            className='LanguageSelectNavBar' 
+            className='LanguageSelectNavBar'
             change={change}
             language={language}
-            />
+          />
 
 
         </Toolbar>

@@ -31,14 +31,12 @@
 
 .toggle-wrapper {
     margin: 0 auto;
-    /* display: none !important; */
-
-    /* position: absolute;
-    top: 5px;
-    right: 45%;
-    left: 45%; */
 }
-
+@media screen and (max-width: 900px) {
+    .toggle-wrapper {
+        display: none !important; 
+    }
+}
 .toggle {
     height: 41px;
     width: 100px;

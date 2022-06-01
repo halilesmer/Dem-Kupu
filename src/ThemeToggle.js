@@ -11,11 +11,11 @@ const updateTheme = (isDarkEnabled) => {
   const white = styles.getPropertyValue("--white");
   const docEl = document.documentElement;
 
-  if (isDarkEnabled) {
+ if (isDarkEnabled === 'dark') {
     docEl.style.setProperty("--background", black);
     docEl.style.setProperty("--foreground", white);
     document.querySelector("html").classList.add("darkmode");
-  } else {
+  } else if (isDarkEnabled === 'light') {
     docEl.style.setProperty("--background", white);
     docEl.style.setProperty("--foreground", black);
     document.querySelector("html").classList.remove("darkmode");
@@ -23,17 +23,32 @@ const updateTheme = (isDarkEnabled) => {
 };
 
 export default function ThemeToggle({ className = '' }) {
-  const [isEnabled, setIsEnabled] = useState(false);
+  const localTheme = window.localStorage.getItem('theme');
+
+ const [isDark, setIsDark] = useState(false)
+ console.log("isDark: ", isDark);
+
 
   const theme = useContext(AppContext);
 
+ 
+
   useEffect(() => {
-    updateTheme(isEnabled);
+    //updateTheme(theme.theme);
+    console.log("localTheme: ", localTheme);
+    if (localTheme=== 'light') {
+      setIsDark(true)
+      updateTheme(localTheme)
+    } else if (localTheme=== 'dark') {
+      setIsDark(false)
+      updateTheme('light')
+    }else{updateTheme(localTheme)}
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isEnabled]);
+  }, []);
 
   const toggleState = () => {
-    setIsEnabled((prevState) => !prevState);
+    setIsDark((prevState) => !prevState);
     theme.toggleTheme();
   };
 
@@ -41,9 +56,9 @@ export default function ThemeToggle({ className = '' }) {
 
     <label className={`${className}`}
       htmlFor="toggle">
-      <div className={`toggle ${isEnabled ? "enabled" : "disabled"}`}>
+      <div className={`toggle ${isDark ?  "enabled": "disabled" }`}>
         <span className="hidden">
-          {isEnabled ? "Enable Light Mode" : "Enable Dark Mode"}
+          {isDark ?  "Enable Dark Mode": "Enable Light Mode"}
         </span>
         <div className="icons">
           <SunIcon />
@@ -53,7 +68,7 @@ export default function ThemeToggle({ className = '' }) {
           id="toggle"
           name="toggle"
           type="checkbox"
-          checked={isEnabled}
+          checked={isDark}
           onClick={toggleState}
           readOnly
         />

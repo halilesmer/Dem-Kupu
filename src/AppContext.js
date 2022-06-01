@@ -1,20 +1,35 @@
 // TODO
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 const AppContext = createContext();
 
 function AppProvider(props) {
-  const [theme, setTheme] = useState(() => localStorage.getItem('light'));
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme'));
   
+  const setMode = mode => {
+    window.localStorage.setItem('theme', mode)
+    setTheme(mode)
+  };
+
   const toggleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-      localStorage.setItem("light", theme);
+    if (theme === 'light') {
+      setMode('dark');
     } else {
-      setTheme("dark");
-      localStorage.setItem("light", theme);
+      setMode('light');
     }
   };
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme');
+    if (localTheme) {
+      setTheme(localTheme);
+    } else {
+      setMode('light');
+    }
+  }, []);
+
+
+
   const themeObj = {
     theme: theme,
     toggleTheme: toggleTheme,
