@@ -138,7 +138,7 @@ const Nav = ({ language, change }) => {
 
               <MenuItem component={'div'} onClick={handleCloseNavMenu}  >
 
-                <ThemeToggle />
+                <ThemeToggle/>
 
               </MenuItem>
 
@@ -198,7 +198,8 @@ const Nav = ({ language, change }) => {
           </Box>
           {/* Navbar Toggle */}
           <Typography component={'div'}>
-            <ThemeToggle className="toggle-wrapper" />
+            <ThemeToggle  className='toggle-wrapper'/>
+
           </Typography>
 
 

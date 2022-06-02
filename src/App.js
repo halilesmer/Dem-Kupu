@@ -8,7 +8,6 @@ import Normalize from 'react-normalize';
 
 export default function App({ children }) {
   const theme = useContext(AppContext);
-  console.log(theme)
 
   return (
     <Fragment>
