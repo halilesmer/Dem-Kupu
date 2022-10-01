@@ -1,27 +1,27 @@
-import * as React from 'react';
 import "./styles.css";
 import "./themeToggle.css";
 
+import * as React from 'react';
+
 import {
-  Box, Toolbar,
-  Container,
+  AppBar,
+  Box,
   Button,
+  Container,
+  IconButton,
   Menu,
   MenuItem,
+  Toolbar,
   Typography,
-  IconButton,
-  AppBar,
-
 } from "@mui/material";
 
-import { Link } from "react-router-dom";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Hamburger from 'hamburger-react'
-import ThemeToggle from './ThemeToggle.js';
 import LanguageMenu from "./Language";
+import { Link } from "react-router-dom";
+import ThemeToggle from './ThemeToggle.js';
 import data from "./data";
 import logo from "./assets/DemKupuLogo.png";
-
 
 const Nav = ({ language, change }) => {
   const [isOpen, setOpen] = React.useState(false)
@@ -39,8 +39,11 @@ const Nav = ({ language, change }) => {
     position: 'fixed',
     top: '0',
     /* color: blanchedalmond; */
-    zIndex: '2'
+    zIndex: '2',
 
+    "&:hover": {
+      background: "#efefef"
+    },
   }
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -56,9 +59,8 @@ const Nav = ({ language, change }) => {
   };
 
   return (
-    <AppBar position="static" style={styleAppbar}>
+    <AppBar position="static" style={styleAppbar} className="app-bar">
       <Container maxWidth="xl">
-
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -67,12 +69,12 @@ const Nav = ({ language, change }) => {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             <Link to="/">
@@ -80,7 +82,10 @@ const Nav = ({ language, change }) => {
             </Link>
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box
+            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            className="app-bar"
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -90,43 +95,40 @@ const Nav = ({ language, change }) => {
               color="inherit"
             >
               <Hamburger toggled={isOpen} toggle={setOpen} />
-
-
             </IconButton>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem
-                onClick={handleCloseNavMenu}  >
+              <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
                   <AnchorLink href="#about">
                     {data[language].aboutNav}
                   </AnchorLink>
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu} >
+              <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
                   <AnchorLink href="#prepare">
                     {data[language].prepareNav}
                   </AnchorLink>
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu} >
+              <MenuItem onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
                   <AnchorLink href="#mail">
                     {data[language].contactNav}
@@ -136,12 +138,9 @@ const Nav = ({ language, change }) => {
 
               {/* Menu Item Toggle */}
 
-              <MenuItem component={'div'} onClick={handleCloseNavMenu}  >
-
-                <ThemeToggle/>
-
+              <MenuItem component={"div"} onClick={handleCloseNavMenu}>
+                <ThemeToggle />
               </MenuItem>
-
             </Menu>
           </Box>
           <Typography
@@ -151,69 +150,54 @@ const Nav = ({ language, change }) => {
             href=""
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
-
             <Link to="/">
               <img src={logo} alt="logo-dem-kupu" width={50} />
             </Link>
-
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
-
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+              sx={{ my: 2, color: "white", display: "block" }}
             >
-              <AnchorLink href="#about">
-                {data[language].aboutNav}
-              </AnchorLink>
+              <AnchorLink href="#about">{data[language].aboutNav}</AnchorLink>
             </Button>
             <Button
-
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+              sx={{ my: 2, color: "white", display: "block" }}
             >
               <AnchorLink href="#prepare">
                 {data[language].prepareNav}
               </AnchorLink>
             </Button>
             <Button
-
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+              sx={{ my: 2, color: "white", display: "block" }}
             >
-              <AnchorLink href="#mail">
-                {data[language].contactNav}
-              </AnchorLink>
+              <AnchorLink href="#mail">{data[language].contactNav}</AnchorLink>
             </Button>
-
           </Box>
           {/* Navbar Toggle */}
-          <Typography component={'div'}>
-            <ThemeToggle  className='toggle-wrapper'/>
-
+          <Typography component={"div"}>
+            <ThemeToggle className="toggle-wrapper" />
           </Typography>
 
-
           <LanguageMenu
-            className='LanguageSelectNavBar'
+            className="LanguageSelectNavBar"
             change={change}
             language={language}
           />
-
-
         </Toolbar>
       </Container>
     </AppBar>
-
 
     /*  <div className="Nav">
        <Navbar>

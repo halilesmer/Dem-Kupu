@@ -102,6 +102,9 @@
 }
 
 
+.app-bar:hover{
+background-color: #008b8b !important;
+}
 
 header a,
 header img  {
