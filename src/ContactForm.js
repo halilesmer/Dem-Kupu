@@ -56,7 +56,6 @@ const ContactForm = ({ language }) => {
   }
 
   const captchaRef = useRef();
-  const [value, setValue] = useState();
   const userOpt = {
     type: "mixed", // "mixed"(default) | "numeric" | "alpha"
     length: 5, // 4 to 8 number. default is 5
@@ -108,8 +107,8 @@ const ContactForm = ({ language }) => {
 
           {/*-------------- Captcha -----------------*/}
 
-          {/* <ClientCaptcha captchaCode={setCaptchaCode} /> */}
           <div ref={captchaRef} />
+          <button onClick={handleRefresh}>Refresh</button>
 
           <input
             type="text"
