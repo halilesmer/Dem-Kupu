@@ -1,8 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { AppProvider} from "./AppContext.js";
+import "./normalize.css";
 
 import App from "./App";
+import { AppProvider } from "./AppContext.js";
+import React from "react";
+import ReactDOM from "react-dom";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

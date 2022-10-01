@@ -1,15 +1,17 @@
-import React, {useRef, useState } from "react";
-import emailjs from "emailjs-com";
-import { init } from "emailjs-com";
 import "./stylesContactForm.css";
-import './snackbar.css';
-import snackbar from "snackbar";
-import ClientCaptcha from "react-client-captcha";
+import "./snackbar.css";
+
+import React, { useEffect, useRef, useState } from "react";
 
 import data from "./data";
+import emailjs from "emailjs-com";
+import { init } from "emailjs-com";
+import snackbar from "snackbar";
+import useCaptcha from "use-offline-captcha";
+
 init("user_kPgH3peyjBxPbk7qgUe3Z");
 const ContactForm = ({ language }) => {
-/* Captcha */
+  /* Captcha */
   const [captchaCode, setCaptchaCode] = useState("");
   const [captchaCodeInput, setCaptchaCodeInput] = useState("");
 
@@ -17,12 +19,14 @@ const ContactForm = ({ language }) => {
     setCaptchaCodeInput(e.target.value);
   };
 
-  
   const form = useRef();
   function sendMessage(event) {
     event.preventDefault();
-  
-    if (captchaCodeInput === captchaCode) {
+
+    const isValid = validate(captchaCodeInput);
+    console.log("isValid: ", isValid);
+
+    if (isValid) {
       emailjs
         .sendForm(
           "service_nn3f4o8",
@@ -44,16 +48,32 @@ const ContactForm = ({ language }) => {
           }
         );
       event.target.reset();
-      setCaptchaCodeInput('')
+      setCaptchaCodeInput("");
     } else {
-     
-
       snackbar.duration = 2000;
-      return (
-        snackbar.show(data[language].sendedMessageError)
-      )
+      return snackbar.show(data[language].sendedMessageError);
     }
-    }
+  }
+
+  const captchaRef = useRef();
+  const [value, setValue] = useState();
+  const userOpt = {
+    type: "mixed", // "mixed"(default) | "numeric" | "alpha"
+    length: 5, // 4 to 8 number. default is 5
+    sensitive: false, // Case sensitivity. default is false
+    width: 200, // Canvas width. default is 200
+    height: 50, // Canvas height. default is 50
+    fontColor: "#000",
+    background: "rgba(255, 255, 255, .2)",
+  };
+  const { gen, validate } = useCaptcha(captchaRef, userOpt);
+
+  useEffect(() => {
+    if (gen) gen();
+  }, [gen]);
+
+  const handleRefresh = () => gen();
+
   return (
     <div id="mail">
       <h3>{data[language].contactNav}</h3>
@@ -88,7 +108,9 @@ const ContactForm = ({ language }) => {
 
           {/*-------------- Captcha -----------------*/}
 
-          <ClientCaptcha captchaCode={setCaptchaCode} />
+          {/* <ClientCaptcha captchaCode={setCaptchaCode} /> */}
+          <div ref={captchaRef} />
+
           <input
             type="text"
             id="captcha"
@@ -101,7 +123,11 @@ const ContactForm = ({ language }) => {
 
           {/*-------------- Submit -----------------*/}
 
-          <input type="submit" value={data[language].sendName} style={{margin: '0 auto', width: '100px', display: 'block'}} />
+          <input
+            type="submit"
+            value={data[language].sendName}
+            style={{ margin: "0 auto", width: "100px", display: "block" }}
+          />
         </form>
       </div>
     </div>

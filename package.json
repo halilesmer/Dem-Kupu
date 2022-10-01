@@ -19,15 +19,14 @@
     "nth-check": "^2.1.1",
     "react": "17.0.0",
     "react-anchor-link-smooth-scroll": "1.0.12",
-    "react-client-captcha": "^1.0.3",
     "react-dark-mode-toggle": "^0.2.0",
     "react-dom": "17.0.0",
-    "react-normalize": "^0.4.4",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.3",
     "snackbar": "^1.1.0",
     "tar": "^6.1.11",
-    "trim-newlines": "^4.0.2"
+    "trim-newlines": "^4.0.2",
+    "use-offline-captcha": "^0.2.0"
   },
   "devDependencies": {
     "ansi-html": "^0.0.9",
